@@ -2,6 +2,7 @@ import * as React from 'react';
 import Head from 'next/head'
 
 import Header from './header'
+import Sidebar from './sidebar'
 
 import { css, jsx } from '@emotion/react'
 import styled from '@emotion/styled'
@@ -28,6 +29,7 @@ const Layout = ( { children }:Props ) => {
            
         </Head>
         <Header />
+        <Sidebar />
         <main className='main-container'>
                 { children }
         </main>
