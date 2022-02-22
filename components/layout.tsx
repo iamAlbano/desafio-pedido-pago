@@ -3,22 +3,18 @@ import Head from 'next/head'
 
 import Header from './header'
 import Sidebar from './sidebar'
+import Container from './container/container';
 
 import { css, jsx } from '@emotion/react'
 import styled from '@emotion/styled'
+
 
 type Props = {
     children: JSX.Element,
   };
 
 
-const Line = styled.div`
-      background-color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 61px;
-`
+
 
 const Layout = ( { children }:Props ) => {
 
@@ -28,13 +24,16 @@ const Layout = ( { children }:Props ) => {
             <title>Pedido Pago</title>
            
         </Head>
+
         <Header />
+
         <Sidebar />
-        <main className='main-container'>
-                { children }
-        </main>
 
-
+         <Container>
+            { children }
+         </Container>
+     
+    
     </>
   );
 }

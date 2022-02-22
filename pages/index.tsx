@@ -6,10 +6,9 @@ import Header from '../components/header'
 const Home: NextPage = () => {
   return (
     <>
-    <div>
-     
-
-    </div>
+    
+     Teste
+   
     </>
   )
 }
