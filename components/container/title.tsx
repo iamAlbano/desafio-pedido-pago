@@ -5,24 +5,40 @@ import styled from '@emotion/styled'
 
 const Text = styled.h1`
                 color: #34423D; 
+                font-size: 18pt;
                 margin-top: 3%;
                 text-align: left;            
-                // @media (max-width: 420px) {
-                    
-                // }
+  `
+
+const Subtitle = styled.h2`
+                color: #34423D; 
+                font-size: 13pt;
+                margin-top: 3%;
+                text-align: left;            
   `
 
 
 type Props = {
-    title: String,
+    text: string,
+    type: string
   };
 
 
-const Title = ( { title }:Props ) => {
+const Title = ( { text, type }:Props ) => {
     return (
-        <Text>
-            { title }
-        </Text>
+        {
+            ...type == "h1" ? (
+                <Text>
+                    { text }
+                </Text>
+            )  : (
+                <Subtitle>
+                    { text }
+                </Subtitle>
+                )
+            }
+        
+        
     );
 }
 

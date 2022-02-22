@@ -7,7 +7,7 @@ import styled from '@emotion/styled'
 
 
 const Box = styled.div`
-              width: 99.7% !important;
+              width: 100% !important;
               background-color: #fff;
               border-radius: 8px; 
               margin-top: 1%; 
@@ -49,7 +49,7 @@ const Container = (  { children }:Props ) => {
       <MainContainer>
 
       <DivBox> 
-        <Title title="Organização" />   
+        <Title text="Organização" type="h1" />   
           <Box>
               { children }
           </Box>

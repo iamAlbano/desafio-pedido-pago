@@ -10,7 +10,7 @@ const Home: NextPage = () => {
     <>
    
       <Tabs active="Cargos" />
-        <SearchBar />
+        <SearchBar placeholder="Pesquisar por cargos" />
    
     </>
   )

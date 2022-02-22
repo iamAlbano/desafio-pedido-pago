@@ -1,8 +1,20 @@
 import * as React from 'react';
+
 import { css, jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import Link from 'next/link'
+
+import FloatMenu from '../floatMenu'
+import ResponsiveContainer from '../ResponsiveContainer';
+
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+
+type Props = {
+    active: string,
+  };
 
 const Tab = styled.ul`
 display: flex;
@@ -14,8 +26,6 @@ color: #34423D;
 list-style: none;
 padding-bottom: 5%;
 padding-left: 0;
-@media (max-width: 500px) {
-    display: none;  }
 `
 
 const Button = styled.li`
@@ -30,28 +40,47 @@ border-bottom: ${props =>
     props.active ? '2px solid #22E0A1' : '2px solid #EAEFED'};
 `
 
-type Props = {
-    active: string,
-  };
+
+
+
+
+
 
 const Tabs = ( { active }:Props ) => {
 
     return (
-        <Tab>     
-                <Button {...active == "Colaboradores" &&({ active })} >
+        <>
+        <ResponsiveContainer device="desktop">
+            <Tab>     
                     <Link href="/" > 
-                            <a>Colaboradores</a>
+                        <Button {...active == "Colaboradores" &&({ active })} >
+                                <a>Colaboradores</a>
+                        </Button>
                     </Link> 
-                </Button>
 
-                <Button {...active == "Cargos" &&({ active })}
-                >
                     <Link href="/cargos" > 
-                            <a>Cargos</a>
+                        <Button {...active == "Cargos" &&({ active })} >
+                                <a>Cargos</a>
+                        </Button>
                     </Link> 
-                </Button>
-          
-        </Tab>
+            
+            </Tab>
+        </ResponsiveContainer>
+        <ResponsiveContainer device="mobile">
+            <OutlinedInput
+                id="outlined-read-only-input"
+                type="text"
+                fullWidth
+                disabled
+                label="aba"
+                value={ active == "Cargos" ? "Cargos" : "Colaboradores" }
+                // onChange={handleChange('password')}
+                endAdornment={
+                    <FloatMenu />          
+                }
+            />
+        </ResponsiveContainer>
+        </>
     );
   }
   
