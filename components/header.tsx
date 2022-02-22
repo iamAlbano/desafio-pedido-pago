@@ -13,7 +13,7 @@ const Line = styled.div`
       height: 61px;
       padding: 1em 1.2em;
       border: 1px solid #EAEFED;
-      box-shadow: 4px 4px 4px rgba(10, 10, 10, .1);
+      box-shadow: 4px 4px 4px rgba(50, 50, 50, .1);
       @media (max-width: 500px) {
         justify-content: center;
       }
