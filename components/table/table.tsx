@@ -1,131 +1,152 @@
 import * as React from 'react';
+import { css, jsx } from '@emotion/react'
+import styled from '@emotion/styled'
 
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
+import UserImage from '../user/userImage'
+import FloatMenu from '../floatMenu'
+import Status from '../user/status'
 
-import internal from 'stream';
-
-import ResponsiveContainer from '../ResponsiveContainer';
-
-interface Column {
-  id: 'name' | 'department' | 'role' | 'unity' | 'status';
-  label: string;
-  minWidth?: number;
-  align?: 'right';
-  format?: (value: number) => string;
-}
-
-const columns: readonly Column[] = [
-  { id: 'name', label: 'Nome completo', minWidth: 170 },
-  { id: 'department', label: 'Departamento', minWidth: 100 },
-  { id: 'role', label: 'Cargo', minWidth: 100 },
-  { id: 'unity', label: 'Unidade', minWidth: 100 },
-  { id: 'status', label: 'Status', minWidth: 50 },
-  
-];
-
-interface Data {
-  id: number;
-  name: string;
-  department: string;
-  role: string;
-  unity: string;
-  status: string;
-}
-
-function createData(
-  id: number,
-  name: string,
-  department: string,
-  role: string,
-  unity: string,
-  status: string,
- 
-): Data {
-  
-  return { id, name, department, role, unity, status };
-}
-
-const rows = [
-  createData( 1, 'Pikachu Soares do Santos Dias', 'Administrativo', 'Diretor', 'Quartel General', 'Ativo' ),
-  createData( 2, 'Godzilla da Silva', 'Administrativo', 'Gerente', 'Quartel General', 'Ativo' ),
-  createData( 3, 'Gandalf Andrade', 'Administrativo', 'Diretor', 'Quartel General', 'Inativo' ),
-  createData( 4, 'Rey Lima e Silva', 'Administrativo', 'Diretor', 'Quartel General', 'Ativo' ),
-  createData( 5, 'Carol Danvers', 'Comercial', 'Analista', 'Quartel General', 'Ativo' ),
-];
-
-export default function StickyHeadTable() {
-
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(2);
-
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
-  return (
+type Props = {
+  header: string[],
+  rows: object[],
+};
 
 
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 240 }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
+const TableContainer = styled.table(`
+                width: 100%;             
+                border-collapse: collapse;
+                text-align: center;
+                table-layout: fixed;
+                
+                
+  `
+)
+
+const TableHead = styled.tr(`
+                  color: #587169;
+                  font-weight: 600;  
+                            
+                                       
+`)
+
+const TableBody = styled.tbody(`
+
+`)
+
+const TableDiv = styled.div(`
+                  height: 35vh;
+                  width: 100%;
+                  overflow-y:auto;
+                  border-radius: 8px;
+`)
+
+const Head = styled.th(`
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 1%;
+                            
+`)
+
+const Row = styled.tr(`
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(29, 209, 149, .1);
+        }
+`)
+
+const Element = styled.td(`
+                padding: 1.7%;
+                color: #587169;
+                font-weight: 600;
+                overflow: hidden;
+                text-overflow: ellipsis;            
+`)
+
+
+const HeadContainer = styled.thead(`
+                border: 2px solid #CAD6D1;  
+                box-sizing: border-box;               
+                border-radius: 8px 8px 0px 0px; 
+
+`)
+
+const RegisterContainer = styled.p(`
+                margin-top: 2%;
+                font-weight: 600;
+                color: #587169;
+`)
+
+
+
+const AgentsTable = ( { header, rows }:Props ) => {
+    return (
+      <>
+      <TableDiv>
+
+        <TableContainer>
+        <HeadContainer>
+              <TableHead>
+                  {
+                    header.map((head) => {
                       return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
+                        <Head key={ head} >
+                          {head}
+                        </Head>
+                      )
+                    })
+                  }
+              </TableHead>
+            </HeadContainer>
+      
+          <TableBody>
+              {
+                rows?.map((row) => {
+                  return (
+                
+                    <Row key={row?.agent_id}>
+                      <Element>
+                        <UserImage name={ row?.name } imagePath={ row?.image }/>
+                      </Element>
+
+                      <Element>
+                        {row?.department}
+                      </Element>
+
+                      <Element>
+                        {row?.role}
+                      </Element>
+
+                      <Element>
+                        {row?.branch}
+                      </Element>
+
+                      <Element>
+                        <Status status={row?.status} />
+                        
+                      </Element>
+
+                      <Element>
+                        <FloatMenu />
+                      </Element>
+                    </Row>
+              
+                  )
+                })
+              }
           </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[1, 2, 5]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
+        </TableContainer>
+            
+      </TableDiv>
+
+          <RegisterContainer>
+            Mostrando 9 de { rows?.length } registros
+          </RegisterContainer>
 
 
-  );
+                
+
+      </>
+    );
 }
+
+export default AgentsTable;

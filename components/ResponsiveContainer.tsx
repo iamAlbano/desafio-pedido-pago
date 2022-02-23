@@ -25,7 +25,7 @@ const Mobile = styled.div`
 const ResponsiveContainer= ( { device, children }:Props ) => {
 
     return (
-        { ...device == "Desktop" ? (
+        { ...device == "desktop" ? (
             <Desktop>
                 { children }
             </Desktop>

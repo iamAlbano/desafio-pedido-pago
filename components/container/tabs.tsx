@@ -24,14 +24,14 @@ align-items: center;
 cursor: pointer; 
 color: #34423D; 
 list-style: none;
-padding-bottom: 5%;
+padding-bottom: 3%;
 padding-left: 0;
 `
 
 const Button = styled.li`
 text-align: center;
-padding-bottom: 1em;
-margin: 0 2em 0em 0;
+padding-bottom: 0.5em;
+margin: 0 1.5em 0em 0;
 width: 35%;
 font-weight: bold;
 color: ${props =>

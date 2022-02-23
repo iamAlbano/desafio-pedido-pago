@@ -6,14 +6,14 @@ import styled from '@emotion/styled'
 const Text = styled.h1`
                 color: #34423D; 
                 font-size: 18pt;
-                margin-top: 3%;
+                margin-top: 2%;
                 text-align: left;            
   `
 
 const Subtitle = styled.h2`
                 color: #34423D; 
                 font-size: 13pt;
-                margin-top: 3%;
+                margin-top: 2%;
                 text-align: left;            
   `
 

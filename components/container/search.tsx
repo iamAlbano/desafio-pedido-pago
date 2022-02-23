@@ -28,7 +28,8 @@ const SearchBar = ( { placeholder }:Props ) => {
         
             <TextField
                 fullWidth
-                id="outlined"
+                id="outlined-size-small"
+                size="small"
                 label="Pesquisar por"
                 type="search"
                 color="primary"
@@ -40,7 +41,7 @@ const SearchBar = ( { placeholder }:Props ) => {
                 InputProps={{
                     startAdornment: (
                     <InputAdornment position="start">
-                        <SearchIcon fontSize="large"/>
+                        <SearchIcon />
                     </InputAdornment>
                     ),
                 }}

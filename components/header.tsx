@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import User from './header/user'
+import User from './user/userHeader'
 import Logo from './brand'
 
 
