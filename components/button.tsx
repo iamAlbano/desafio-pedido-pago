@@ -4,9 +4,13 @@ import Router from 'next/router'
 import { styled, alpha } from '@mui/material/styles';
 import Button, { ButtonProps } from '@mui/material/Button';
 import Menu, { MenuProps } from '@mui/material/Menu';
+
 import MenuItem from '@mui/material/MenuItem';
+import {HiPencilAlt as EditIcon} from 'react-icons/hi';
+import DuplicateIcon from '@mui/icons-material/LayersOutlined';
 import EyeIcon from '@mui/icons-material/VisibilityOutlined';
 import TrashIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import RoundedIcon from '@mui/icons-material/SyncRounded';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import NoteIcon from '@mui/icons-material/NoteAddOutlined';
 
@@ -145,14 +149,40 @@ export default function CustomizedMenus( { id, path }:Props ) {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={routeChange} disableRipple>
-          <EyeIcon />
-            Ver colaborador
-        </MenuItem>
-        <MenuItem onClick={handleClose} disabled disableRipple>
-         <TrashIcon />
-            Excluir
-        </MenuItem>
+        {
+          path == "/colaborador" ? (
+            <>
+              <MenuItem onClick={routeChange} disableRipple>
+                <EyeIcon />
+                  Ver colaborador
+              </MenuItem>
+              
+              <MenuItem onClick={handleClose} disabled disableRipple>
+              <TrashIcon />
+                  Excluir
+              </MenuItem>
+            </>   
+          ) : (
+            <>
+              <MenuItem onClick={routeChange} disableRipple>
+                <EyeIcon />
+                  Ver cargo
+              </MenuItem>
+              <MenuItem onClick={handleClose} disabled disableRipple>
+                <EditIcon size="21"/> &nbsp; 
+                  Editar
+              </MenuItem>
+              <MenuItem onClick={handleClose} disabled disableRipple>
+                <DuplicateIcon />
+                  Duplicar
+              </MenuItem>
+              <MenuItem onClick={handleClose} disabled disableRipple>
+              <RoundedIcon />
+                  Excluir
+              </MenuItem>
+            </>
+          )
+        }
         
        
       </StyledMenu>
