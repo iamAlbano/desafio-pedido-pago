@@ -19,6 +19,7 @@ const Box = styled.div`
 
 type Props = {
   children: JSX.Element,
+  title: string,
 };
 
 
@@ -56,12 +57,12 @@ const DivBox = styled.div`
 
 
 
-const Container = (  { children }:Props ) => {
+const Container = (  { title, children }:Props ) => {
 
     return (
       <MainContainer>
         <DivBox> 
-          <Title text="Organização" type="h1" />   
+          <Title text={ title } type="h1" />   
             <Box>
                 { children }
             </Box>

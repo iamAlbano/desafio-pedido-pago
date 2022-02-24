@@ -10,11 +10,13 @@ import React, { useEffect, useState } from "react";
 
 import Tabs from '../components/container/tabs'
 import Title from '../components/container/title'
-import Table from '../components/table/table'
+import ResponsiveContainer from '../components/ResponsiveContainer'
+import AgentsTable from '../components/table/agents/agentsTable'
+
 import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event'
+import AgentsMobileTable from '../components/table/agents/agentsMobileTable'
 
-
-
+import Layout from '../components/layout'
 
 const Home: NextPage = (  ) => {
 
@@ -53,20 +55,25 @@ useEffect(() => {
 const heads = ["Nome completo", "Departamento", "Cargo", "Unidade", "Status"]
 
   return (
-    <>
-
-
-   
+    <Layout title="Organização">
+      <>
+  
       <Tabs active="Colaboradores" />
-      <SearchBar placeholder="Pesquisar por nome ou CPF"/>
+      <SearchBar label="Pesquisar por" placeholder="Pesquisar por nome ou CPF"/>
 
       <Title text="Listagem de colaboradores" type="h2"/>
     
       
+      <ResponsiveContainer device="desktop">
+          <AgentsTable content={ agents }/>
+      </ResponsiveContainer>
 
-      <Table header={ heads } rows={ agents } quant={3} />
-      
-    </>
+      <ResponsiveContainer device="mobile">
+          <AgentsMobileTable content={ agents } />
+      </ResponsiveContainer>
+
+      </>
+    </Layout>
   )
 }
 

@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 
 import Link from 'next/link'
 
-import FloatMenu from '../floatMenu'
+import FloatMenu from './floatMenu'
 import ResponsiveContainer from '../ResponsiveContainer';
 
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -32,7 +32,7 @@ const Button = styled.li`
 text-align: center;
 padding-bottom: 0.5em;
 margin: 0 1.5em 0em 0;
-width: 35%;
+width: 25%;
 font-weight: bold;
 color: ${props =>
     props.active ? '#34423D' : '#A3B8B0'};

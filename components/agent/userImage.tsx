@@ -9,16 +9,23 @@ const Text = styled.p(
 `
       font-weight: 600;
       color: #34423D;
-      margin: 1px; 
+      margin-left: 5%;
+      vertical-align: top;
       
 `
 )
 
 
 const UserContainer = styled.div`
-      
-        margin-left: 8%;
+      display: flex;
+      flex-direction: row;
+      margin: 0;
   `
+
+  const ImageContainer = styled.div`
+        margin-top: 1%;
+  `
+
 
 
 type Props = {
@@ -30,9 +37,11 @@ type Props = {
 const UserImage = ( {name, imagePath }:Props ) => {
     return (
         <>
-            {/* <Avatar alt={ name } src={ imagePath} sx={{ width: 25, height: 25 }} /> */}
-
             <UserContainer>
+                <ImageContainer>
+                    <Avatar alt={ name } src={ imagePath}  />
+                </ImageContainer>
+
                 <Text >{ name }</Text>
             </UserContainer>
         </>

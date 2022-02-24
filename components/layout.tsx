@@ -10,13 +10,14 @@ import styled from '@emotion/styled'
 
 
 type Props = {
+    title: string,
     children: JSX.Element,
   };
 
 
 
 
-const Layout = ( { children }:Props ) => {
+const Layout = ( { title, children }:Props ) => {
 
   return (
     <>
@@ -29,7 +30,7 @@ const Layout = ( { children }:Props ) => {
 
         <Sidebar />
 
-         <Container>
+         <Container title={ title }>
             { children }
          </Container>
      

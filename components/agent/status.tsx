@@ -7,12 +7,14 @@ type Props = {
   };
 
   const UserStatus = styled.div`
-                        width: 72px;
-                        height: 24px;
+                              
+                        text-align: center;
                         border-radius: 80px;
-                        padding: 4px, 8px, 4px, 8px; 
                         margin: 0 auto;
-                        font-weight: 500;
+                        font-weight: 600;
+                        @media (min-width: 800px) {
+                            padding: 5%; 
+                        }               
                         background-color: ${props =>
                             props.status ? '#B5F1DD' : '#EAEFED'};
   `

@@ -9,14 +9,14 @@ type Props = {
   };
 
 const Desktop = styled.div`                      
-@media (max-width: 500px) {
+@media (max-width: 700px) {
         display: none;
     }
 `
 
 const Mobile = styled.div`
             padding-bottom: 2em;                      
-            @media (min-width: 500px) {
+            @media (min-width: 700px) {
                 display: none;
             }
 `

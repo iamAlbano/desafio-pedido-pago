@@ -15,13 +15,14 @@ import styled from '@emotion/styled'
 
 type Props = {
     placeholder: string,
+    label: string;
 };
 
 
 
  
 
-const SearchBar = ( { placeholder }:Props ) => {
+const SearchBar = ( { label, placeholder }:Props ) => {
 
     return(
         <>
@@ -30,9 +31,9 @@ const SearchBar = ( { placeholder }:Props ) => {
                 fullWidth
                 id="outlined-size-small"
                 size="small"
-                label="Pesquisar por"
+                label={ label }
                 type="search"
-                color="primary"
+                color="info"
                 placeholder={ placeholder }
                 InputLabelProps={{
                     shrink: true,
