@@ -45,6 +45,8 @@ export default function ControlledAccordions( { content }:Props ) {
       setExpanded(isExpanded ? panel : false);
     };
 
+  let key:number = 1
+
   return (
 
       <div>
@@ -52,9 +54,9 @@ export default function ControlledAccordions( { content }:Props ) {
       { content?.map((agent) => {
         return(    
             <Accordion 
-            expanded={expanded === 'panel'+agent?.agent_id } 
-            onChange={handleChange('panel'+agent?.agent_id)} 
-            key={agent?.agent_id}>
+            expanded={expanded === 'panel'+key } 
+            onChange={handleChange('panel'+key)} 
+            key={key}>
 
                 <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -93,7 +95,7 @@ export default function ControlledAccordions( { content }:Props ) {
                             </Grid>
                         </Grid>
                        
-                        <Button text="Ações" />
+                        <Button id={key++} />
                     </Box>
                 </Typography>
                 </AccordionDetails>
