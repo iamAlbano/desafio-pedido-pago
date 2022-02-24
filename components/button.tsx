@@ -96,9 +96,10 @@ const StyledMenu = styled((props: MenuProps) => (
 
 type Props = {
   id: number,
+  path: string,
 };
 
-export default function CustomizedMenus( { id }:Props ) {
+export default function CustomizedMenus( { id, path }:Props ) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -113,7 +114,7 @@ export default function CustomizedMenus( { id }:Props ) {
   const routeChange = ( ) =>{ 
     
     const {pathname} = Router
-    Router.push(`/colaborador/${id}`)
+    Router.push(`${path}/${id}`)
    
   }
 

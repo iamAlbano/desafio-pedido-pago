@@ -91,7 +91,7 @@ export default function ControlledAccordions( { content }:Props ) {
                             
                         </Grid>
                        
-                        <Button text="Ações" />
+                        <Button id={ key } path="/cargos" />
                     </Box>
                 </Typography>
                 </AccordionDetails>

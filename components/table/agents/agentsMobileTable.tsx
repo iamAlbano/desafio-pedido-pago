@@ -95,7 +95,7 @@ export default function ControlledAccordions( { content }:Props ) {
                             </Grid>
                         </Grid>
                        
-                        <Button id={key++} />
+                        <Button id={key++} path="/colaborador" />
                     </Box>
                 </Typography>
                 </AccordionDetails>
