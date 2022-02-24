@@ -14,31 +14,31 @@ import AgentImage from '../../components/agent/agentImage';
 import Layout from '../../components/layout'
 
 import Info from '../../components/agent/info'
-
+import DataContainer from '../../components/agent/dataContainer'
 
 
 export default function AgentPage ( ) {
 
-const [agent, setAgent] = useState();
+  const [agent, setAgent] = useState();
 
-const router = useRouter()
-const { colaboradorId } = router.query
+  const router = useRouter()
+  const { colaboradorId } = router.query
 
 
 
-useEffect(() => {
-  
-  
-  api
-    .get(`/agent/${colaboradorId}`)
-    .then((response) => {
-      setAgent(response.data.agent)
-    }
-    )
-    .catch((err) => {
-      console.error("erro: " + err);
-    });
-}, []);
+  useEffect(() => {
+    
+    
+    api
+      .get(`/agent/${colaboradorId}`)
+      .then((response) => {
+        setAgent(response.data.agent)
+      }
+      )
+      .catch((err) => {
+        console.error("erro: " + err);
+      });
+  }, []);
 
 console.log(agent)
 
@@ -49,28 +49,25 @@ console.log(agent)
 
         <Layout title="Detalhes do colaborador">
             <>
-        
-                
-
                 <AgentImage 
                     name={agent?.name} 
                     email={agent?.email} 
                     imagePath={agent?.image} />
 
                 <Title text="Informações pessoais" type="h2" />
-
-                
-
                   
-                
-                <ResponsiveContainer device="desktop">
                     <Info 
                         cpf={agent?.document.number} 
                         phone={`+${agent?.phone.ddi} ${agent?.phone.ddd} ${agent?.phone.number}`} 
                         date={ agent?.birth_date } />
-                </ResponsiveContainer>
 
                 
+                    <DataContainer 
+                          departament={agent?.department}
+                          role={agent?.role}
+                          branch={agent?.branch}
+                          status={agent?.status}  />
+          
 
             </>
         </Layout>

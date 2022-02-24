@@ -39,7 +39,7 @@ useEffect(() => {
     <Layout title="Organização">
       <>
         <Tabs active="Cargos" />
-        { console.log(roles)}
+  
         <SearchBar label="Pesquisar por" placeholder="Pesquise por cargos" />
                 
         <Title text="Listagem de cargos" type="h2"/>

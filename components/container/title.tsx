@@ -2,6 +2,9 @@ import * as React from 'react';
 import { css, jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 
+import { useRouter } from 'next/router'
+
+import ReturnButton from '../../components/returnButton'
 
 const Text = styled.h1`
                 color: #34423D; 
@@ -20,15 +23,22 @@ const Subtitle = styled.h2`
 
 type Props = {
     text: string,
-    type: string
+    type: string,
   };
 
 
 const Title = ( { text, type }:Props ) => {
+    
+    const router = useRouter()
+  
+
     return (
         {
             ...type == "h1" ? (
                 <Text>
+                { router.pathname != '/' && (
+                    <ReturnButton />
+                )}
                     { text }
                 </Text>
             )  : (
