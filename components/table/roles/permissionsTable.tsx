@@ -2,12 +2,9 @@ import * as React from 'react';
 import { styled } from '@mui/system';
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 
-import RoleFloatMenu from '../roles/roleFloatMenu'
+import Checkbox from '@mui/material/Checkbox';
 
 
-type Props = {
-    content: object[],
-  };
 
 const Root = styled('div')`
   table {
@@ -103,20 +100,34 @@ export default function UnstyledTable( { content }:Props ) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  function createData(name: string, departament: string,  agents_quantity:number) {
+  function createData(name: string, read: boolean,  edit:boolean, del: boolean) {
     
-    return { name, departament, agents_quantity };
+    return { name, read, edit, del };
     
   }
 
+  interface permissions {
+    name: string;
+    read: boolean;
+    edit: boolean;
+    del: boolean;
+  }
   
-  let rows:string[] = [
-       
-    ];
+  interface Props {
+    content: object[],
+    rows: permissions[];
+  }
+
+  
+  let rows:Props = [];
 
     content?.map((row) => {
+       
         rows.push(
-            createData(row?.name, row?.departament, row?.agents_quantity  ),
+            createData(row?.role,
+                row?.permissions.includes('read'), 
+                row?.permissions.includes('write'),
+                row?.permissions.includes('delete'),  ),
         )
      })
 
@@ -146,8 +157,9 @@ export default function UnstyledTable( { content }:Props ) {
         <thead>
           <tr>
             <th>Cargo</th>
-            <th>Departamento</th>
-            <th>Colaboradores</th>       
+            <th>Ler</th>
+            <th>Editar</th>   
+            <th>Excluir</th>     
           </tr>
         </thead>
         <tbody>
@@ -162,15 +174,48 @@ export default function UnstyledTable( { content }:Props ) {
                     {row.name} 
                   </td>
               
-                    <td style={{ width: 160 }} align="right">
-                        {row.departament}
+                    <td style={{ width: 130 }} align="justify">
+                        {row.read == true ? (
+                            <Checkbox
+                            color="success"
+                            defaultChecked
+                            sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+                          />
+                        ) : (
+                            <Checkbox
+                            color="success"
+                            sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+                          />
+                        )}
                     </td>
-                    <td style={{ width: 130 }} align="right">
-                        {row.agents_quantity}
+                    <td style={{ width: 130 }} align="justify">
+                        {row.edit == true ? (
+                            <Checkbox
+                            color="success"
+                            defaultChecked
+                            sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+                          />
+                        ) : (
+                            <Checkbox
+                            color="success"
+                            sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+                          />
+                        )}
                     </td>
                     
-                    <td style={{ width: 40 }} align="right">
-                        <RoleFloatMenu roleId={key}/>
+                    <td style={{ width: 40 }} align="justify">
+                        {row.del == true ? (
+                            <Checkbox
+                            color="success"
+                            defaultChecked
+                            sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+                          />
+                        ) : (
+                            <Checkbox
+                            color="success"
+                            sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+                          />
+                        )}
                     </td>
             </tr>
           ))}

@@ -24,10 +24,9 @@ type Props = {
 const InfoContainer= styled.div(
     `
     margin: 2% 1.2% 2% 0%;
-         
-          
+   
     `
-    )
+)
 
 export default function Info( { cpf, phone, date}:Props ){
 

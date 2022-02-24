@@ -1,55 +1,55 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import Header from '../../components/header'
-import SearchBar from '../../components/container/search'
-import Tabs from '../../components/container/tabs'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from "react";
 
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+import api from "../api/agents";
 
-import ResponsiveContainer from '../../components/ResponsiveContainer'
+
+import Layout from '../../components/layout'
+import Title from '../../components/container/title'
+import Info from '../../components/role/info'
+import PermissionsTable from '../../components/table/roles/permissionsTable'
+
+
 
 const Home: NextPage = () => {
+
+  const [cargo, setCargo] = useState();
+
+  const router = useRouter()
+  const { cargoId } = router.query
+
+
+  useEffect(() => {
+    
+    
+    api
+      .get(`/role/${cargoId}`)
+      .then((response) => {
+        setCargo(response.data.role)
+      }
+      )
+      .catch((err) => {
+        console.error("erro: " + err);
+      });
+  }, []);
+
+
   return (
-    <>
-   
-      <Tabs active="Cargos" />
-        
-      
-      {/* Modelo para desktops */}
-      <ResponsiveContainer device="desktop">
-        <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
-              <SearchBar label="Departamento" placeholder="" />
-              </Grid>
-              <Grid item xs={6}>
-              <SearchBar label="Cargo" placeholder="" />
-              </Grid>   
-            </Grid>
-        </Box>
-      </ResponsiveContainer>
 
-      
-      {/* Modelo para mobile */}
-      <ResponsiveContainer device="mobile">
-        <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-              <SearchBar label="Departamento" placeholder="" />
-              </Grid>
-              <Grid item xs={12}>
-              <SearchBar label="Cargo" placeholder="" />
-              </Grid>   
-            </Grid>
-        </Box>
-      </ResponsiveContainer>
+    <Layout title="Cargos e permissões">
+      <>
+     
+      <Title text="Dados do cargo" type="h2"/>
+      <Info name={cargo?.name} department={cargo?.department} />
+      <Title text="Listagem de permissões" type="h2" />
 
-
-  
-    </>
+      <PermissionsTable content={cargo?.grouprules} />
+      </>
+    </Layout>
   )
 }
 
-export default Home
+export default Home;

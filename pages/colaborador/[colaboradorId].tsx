@@ -40,9 +40,6 @@ export default function AgentPage ( ) {
       });
   }, []);
 
-console.log(agent)
-
-
 
   
   return (
