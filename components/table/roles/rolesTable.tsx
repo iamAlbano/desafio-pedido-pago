@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled } from '@mui/system';
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 
-import RoleFloatMenu from '../roles/roleFloatMenu'
+import FloatMenu from '../FloatMenu'
 
 
 type Props = {
@@ -170,7 +170,7 @@ export default function UnstyledTable( { content }:Props ) {
                     </td>
                     
                     <td style={{ width: 40 }} align="right">
-                        <RoleFloatMenu roleId={key}/>
+                        <FloatMenu id={key} path="/cargos" />
                     </td>
             </tr>
           ))}

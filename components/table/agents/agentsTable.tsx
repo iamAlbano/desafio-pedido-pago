@@ -3,7 +3,7 @@ import { styled } from '@mui/system';
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 
 import Status from '../../agent/status' 
-import AgentFloatMenu from './agentFloatMenu'
+import FloatMenu from '../FloatMenu'
 
 import UserImage from '../../agent/userImage'
 
@@ -177,7 +177,7 @@ export default function UnstyledTable( { content }:Props ) {
                 <Status status={row.status} />
               </td>
               <td style={{ width: 40 }} align="right">
-                <AgentFloatMenu agentId={ key } />
+                <FloatMenu id={ key } path="/colaborador" />
               </td>
             </tr>
           ))}
