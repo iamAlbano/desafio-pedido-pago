@@ -6,6 +6,7 @@ import { css, jsx } from '@emotion/react'
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import CloseIcon from '@mui/icons-material/Close';
@@ -77,12 +78,10 @@ export default function LongMenu() {
           },
         }}
       >
-        <MenuItem key={0} >
-          <>
+        <MenuItem key={0}>
             <TabTitle>Categorias</TabTitle>
             <CloseIcon onClick={handleClose} />
-          </>
-          </MenuItem>
+        </MenuItem>
         {options.map((option) => (
           <MenuItem key={option} onClick={() => routeChange(option)}>
             {option}

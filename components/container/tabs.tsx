@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 
 import Link from 'next/link'
 
-import FloatMenu from './floatMenu'
+import FloatMenu from './tabsFloatMenu'
 import ResponsiveContainer from '../ResponsiveContainer';
 
 import OutlinedInput from '@mui/material/OutlinedInput';

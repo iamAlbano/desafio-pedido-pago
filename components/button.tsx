@@ -125,7 +125,7 @@ export default function CustomizedMenus( { id, path }:Props ) {
  
 
   return (
-    <div>
+    <>
       <BootstrapButton
         id="demo-customized-button"
         fullWidth
@@ -151,32 +151,32 @@ export default function CustomizedMenus( { id, path }:Props ) {
       >
         {
           path == "/colaborador" ? (
-            <>
-              <MenuItem onClick={routeChange} disableRipple>
+           <>
+              <MenuItem onClick={routeChange} key={0} disableRipple>
                 <EyeIcon />
                   Ver colaborador
               </MenuItem>
               
-              <MenuItem onClick={handleClose} disabled disableRipple>
+              <MenuItem onClick={handleClose} key={1} disabled disableRipple>
               <TrashIcon />
                   Excluir
               </MenuItem>
-            </>   
+            </>
           ) : (
-            <>
-              <MenuItem onClick={routeChange} disableRipple>
+           <>
+              <MenuItem onClick={routeChange} key={2} disableRipple>
                 <EyeIcon />
                   Ver cargo
               </MenuItem>
-              <MenuItem onClick={handleClose} disabled disableRipple>
+              <MenuItem onClick={handleClose} key={3} disabled disableRipple>
                 <EditIcon size="21"/> &nbsp; 
                   Editar
               </MenuItem>
-              <MenuItem onClick={handleClose} disabled disableRipple>
+              <MenuItem onClick={handleClose} key={4} disabled disableRipple>
                 <DuplicateIcon />
                   Duplicar
               </MenuItem>
-              <MenuItem onClick={handleClose} disabled disableRipple>
+              <MenuItem onClick={handleClose} key={5} disabled disableRipple>
               <RoundedIcon />
                   Excluir
               </MenuItem>
@@ -186,6 +186,6 @@ export default function CustomizedMenus( { id, path }:Props ) {
         
        
       </StyledMenu>
-    </div>
+    </>
   );
 }

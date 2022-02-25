@@ -46,7 +46,7 @@ export default function FloatMenu( { id, path }:Props ) {
   }
 
   return (
-    <div>
+    <>
       <IconButton
         aria-label="more"
         id="long-button"
@@ -58,55 +58,55 @@ export default function FloatMenu( { id, path }:Props ) {
         <MoreVertIcon />
       </IconButton>
       <Menu
-        id="long-menu"
-        MenuListProps={{
-          'aria-labelledby': 'long-button',
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        PaperProps={{
-          style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: '20ch',
-          },
-        }}
+          id="long-menu"
+          MenuListProps={{
+            'aria-labelledby': 'long-button',
+          }}
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          PaperProps={{
+            style: {
+              maxHeight: ITEM_HEIGHT * 4.5,
+              width: '20ch',
+            },
+          }}
       >
         {
           path == "/colaborador" ? (
-            <>
-              <MenuItem onClick={routeChange} disableRipple>
+            <div>
+              <MenuItem onClick={routeChange} key={0} disableRipple>
                 <EyeIcon sx={{ color: 'rgba(88, 113, 105, 1)' }} />
                   Ver colaborador
               </MenuItem>
               
-              <MenuItem onClick={handleClose} disabled disableRipple>
+              <MenuItem onClick={handleClose} key={1} disabled disableRipple>
               <TrashIcon />
                   Excluir
               </MenuItem>
-            </>   
+            </div>   
           ) : (
-            <>
-              <MenuItem onClick={routeChange} disableRipple>
+            <div>
+              <MenuItem onClick={routeChange} key={2} disableRipple>
                 <EyeIcon sx={{ color: 'rgba(88, 113, 105, 1)' }} /> &nbsp; 
                   Ver cargo
               </MenuItem>
-              <MenuItem onClick={handleClose} disabled disableRipple>
+              <MenuItem onClick={handleClose} key={3} disabled disableRipple>
                 <EditIcon size="23"/> &nbsp; 
                   Editar
               </MenuItem>
-              <MenuItem onClick={handleClose} disabled disableRipple>
+              <MenuItem onClick={handleClose} key={4} disabled disableRipple>
                 <DuplicateIcon /> &nbsp; 
                   Duplicar
               </MenuItem>
-              <MenuItem onClick={handleClose} disabled disableRipple>
+              <MenuItem onClick={handleClose} key={5} disabled disableRipple>
               <RoundedIcon /> &nbsp; 
                   Excluir
               </MenuItem>
-            </>
+            </div>
           )
         }
       </Menu>
-    </div>
+    </>
   );
 }

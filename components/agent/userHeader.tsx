@@ -43,7 +43,7 @@ const Text = styled.p(
       fontSize: '9pt',  
     },
 
-    `@media (max-width: 590px) {
+    `@media (max-width: 700px) {
               display: none;
     }`,
 
