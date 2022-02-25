@@ -76,7 +76,7 @@ export default function FloatMenu( { id, path }:Props ) {
           path == "/colaborador" ? (
             <>
               <MenuItem onClick={routeChange} disableRipple>
-                <EyeIcon />
+                <EyeIcon sx={{ color: 'rgba(88, 113, 105, 1)' }} />
                   Ver colaborador
               </MenuItem>
               
@@ -88,19 +88,19 @@ export default function FloatMenu( { id, path }:Props ) {
           ) : (
             <>
               <MenuItem onClick={routeChange} disableRipple>
-                <EyeIcon />
+                <EyeIcon sx={{ color: 'rgba(88, 113, 105, 1)' }} /> &nbsp; 
                   Ver cargo
               </MenuItem>
               <MenuItem onClick={handleClose} disabled disableRipple>
-                <EditIcon size="21"/> &nbsp; 
+                <EditIcon size="23"/> &nbsp; 
                   Editar
               </MenuItem>
               <MenuItem onClick={handleClose} disabled disableRipple>
-                <DuplicateIcon />
+                <DuplicateIcon /> &nbsp; 
                   Duplicar
               </MenuItem>
               <MenuItem onClick={handleClose} disabled disableRipple>
-              <RoundedIcon />
+              <RoundedIcon /> &nbsp; 
                   Excluir
               </MenuItem>
             </>

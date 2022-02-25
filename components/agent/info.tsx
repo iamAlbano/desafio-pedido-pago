@@ -14,6 +14,7 @@ import Phone from '@mui/icons-material/PhoneInTalkTwoTone';
 import Calendar from '@mui/icons-material/CalendarTodayTwoTone';
 
 import ResponsiveContainer from '../ResponsiveContainer'
+import PersonalField from './personalField'
 
 type Props = {
     cpf: string,
@@ -37,11 +38,10 @@ return (
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
 
-                    <Grid item xs={4}>
+                    <Grid item xs={4}>            
                         <FormControl fullWidth sx={{ m: 1 }}>      
                             <InputLabel htmlFor="outlined-adornment">CPF</InputLabel>
                                 <OutlinedInput
-                                        readOnly
                                         id="outlined-adornment"
                                         value={ cpf }              
                                         startAdornment={

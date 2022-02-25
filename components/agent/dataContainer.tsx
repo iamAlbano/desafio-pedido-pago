@@ -2,8 +2,10 @@ import * as React from 'react';
 import { css, jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 
+import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import MenuItem from '@mui/material/MenuItem';
 
 import Title from '../container/title'
 import Select from '../../components/select'
@@ -38,7 +40,7 @@ const SelectContainer = styled.div(`
 `)
 
 const Divider = styled.div(`
-    padding: 2%;
+    padding: 1.5%;
 `)
 
 
@@ -59,7 +61,7 @@ return (
         <DataContainer> 
         <Title text="Dados organizacionais" type="h2" />        
         <Divider /> 
-            <SelectContainer>
+            <SelectContainer> 
                 <Select label="Departamento" defaultValue={'Administrativo'} options={ allDepartments }/> 
                 <Divider />            
                 <Select label="Cargo" defaultValue={'Supervisor'} options={ allRoles } />                  

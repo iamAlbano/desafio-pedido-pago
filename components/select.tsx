@@ -1,18 +1,24 @@
-
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
-
-import React, { useState } from "react";
-
+import * as React from 'react';
 import { css, jsx } from '@emotion/react'
-import styled from '@emotion/styled'
 
-interface OptionsType {
-    label: string;
-    value: string;
-  }
-  
+import { alpha, styled } from '@mui/material/styles';
+
+import InputBase from '@mui/material/InputBase';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import TextField, { TextFieldProps } from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
+import { OutlinedInputProps } from '@mui/material/OutlinedInput';
+import { red } from '@mui/material/colors';
+
+const Info= styled(TextField)`
+
+background-color: rgba(245, 250, 248, 1);
+border-radius: 8px !important;
+
+
+`
+
 
 type Props = {
     label: string,
@@ -24,39 +30,16 @@ type Props = {
   export default function SelectTextFields( { label, defaultValue, options }:Props ) {
     
   
-
-    let selectOptions:OptionsType[] = [ ];
-  
     
-    options.map((option) => {
-        selectOptions.push({value: option, label: option})
-    })
-    
-    const [current, setCurrent] = useState(defaultValue);
-
-   
-
-      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCurrent(event.target.value);
-      };
-
-    return(
+    return (
+      <Info
+        label={label}
+        fullWidth
        
-            <TextField
-            fullWidth
-            id="outlined-select-currency"
-            select
-            label={ label }
-            value={current}
-            onChange={handleChange}
-            
-            >
-            {selectOptions.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                {option.label}
-                </MenuItem>
-            ))}
-            </TextField>
-    
+        defaultValue={defaultValue}
+        
+      />
     )
+    
+    
 }

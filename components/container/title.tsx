@@ -36,7 +36,7 @@ const Title = ( { text, type }:Props ) => {
         {
             ...type == "h1" ? (
                 <Text>
-                { router.pathname != '/' && (
+                { router.pathname != '/'  && (
                     <ReturnButton />
                 )}
                     { text }
