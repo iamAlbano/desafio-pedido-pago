@@ -7,7 +7,6 @@ import Avatar from '@mui/material/Avatar';
 type Props = {
     name: string,
     imagePath: string,
-    actived: string,
     status: string,
   };
 
