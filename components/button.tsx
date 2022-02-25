@@ -151,7 +151,7 @@ export default function CustomizedMenus( { id, path }:Props ) {
       >
         {
           path == "/colaborador" ? (
-           <>
+           <div>
               <MenuItem onClick={routeChange} key={0} disableRipple>
                 <EyeIcon />
                   Ver colaborador
@@ -161,9 +161,9 @@ export default function CustomizedMenus( { id, path }:Props ) {
               <TrashIcon />
                   Excluir
               </MenuItem>
-            </>
+            </div>
           ) : (
-           <>
+           <div>
               <MenuItem onClick={routeChange} key={2} disableRipple>
                 <EyeIcon />
                   Ver cargo
@@ -180,7 +180,7 @@ export default function CustomizedMenus( { id, path }:Props ) {
               <RoundedIcon />
                   Excluir
               </MenuItem>
-            </>
+            </div>
           )
         }
         
