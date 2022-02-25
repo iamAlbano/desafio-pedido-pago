@@ -1,11 +1,14 @@
 import * as React from 'react';
 import Router from 'next/router'
+import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/react'
 
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
+import CloseIcon from '@mui/icons-material/Close';
 
 const options = [
   'Colaboradores',
@@ -13,7 +16,12 @@ const options = [
   
 ];
 
-const ITEM_HEIGHT = 30;
+const TabTitle = styled.p`
+                font-weight: bold;
+                margin-right: 25%;
+`
+
+const ITEM_HEIGHT = 45;
 
 export default function LongMenu() {
 
@@ -69,6 +77,12 @@ export default function LongMenu() {
           },
         }}
       >
+        <MenuItem key={0} >
+          <>
+            <TabTitle>Categorias</TabTitle>
+            <CloseIcon onClick={handleClose} />
+          </>
+          </MenuItem>
         {options.map((option) => (
           <MenuItem key={option} onClick={() => routeChange(option)}>
             {option}

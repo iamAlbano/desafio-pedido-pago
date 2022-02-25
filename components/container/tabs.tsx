@@ -17,27 +17,27 @@ type Props = {
   };
 
 const Tab = styled.ul`
-display: flex;
-flex-direction: row;
-justify-content: left;
-align-items: center;
-cursor: pointer; 
-color: #34423D; 
-list-style: none;
-padding-bottom: 3%;
-padding-left: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        cursor: pointer; 
+        color: #34423D; 
+        list-style: none;
+        padding-bottom: 3%;
+        padding-left: 0;
 `
 
 const Button = styled.li`
-text-align: center;
-padding-bottom: 0.5em;
-margin: 0 1.5em 0em 0;
-width: 25%;
-font-weight: bold;
-color: ${props =>
-    props.active ? '#34423D' : '#A3B8B0'};
-border-bottom: ${props =>
-    props.active ? '2px solid #22E0A1' : '2px solid #EAEFED'};
+        text-align: center;
+        padding-bottom: 0.5em;
+        margin: 0 1.5em 0em 0;
+        width: 25%;
+        font-weight: bold;
+        color: ${props =>
+            props.active ? '#34423D' : '#A3B8B0'};
+        border-bottom: ${props =>
+            props.active ? '2px solid #22E0A1' : '2px solid #EAEFED'};
 `
 
 
