@@ -63,20 +63,21 @@ export default function ControlledAccordions( { content }:Props ) {
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
                 >
-                <Typography sx={{ width: '100%', flexShrink: 0 }}>
+                
                
-                <Container>
+                    <Container>
                           <Head>Cargo</Head>
                           <Text>{ role?.name }</Text>
                     </Container>              
                    
-                </Typography>
+                
                 
                 {/* <Typography sx={{ color: 'text.secondary' }}>Nome completo</Typography> */}
 
                 </AccordionSummary>
+
                 <AccordionDetails>
-                <Typography>
+            
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container spacing={2}>
                             
@@ -93,7 +94,7 @@ export default function ControlledAccordions( { content }:Props ) {
                        
                         <Button id={ key } path="/cargos" />
                     </Box>
-                </Typography>
+              
                 </AccordionDetails>
             </Accordion>
         )

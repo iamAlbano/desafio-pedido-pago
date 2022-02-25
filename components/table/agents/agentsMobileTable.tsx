@@ -12,6 +12,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 
 import Button from '../../button'
 import UserImage from '../../agent/userImage'
@@ -26,6 +27,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
+  width: 100%;
 `
 
 const Head = styled.p`
@@ -54,27 +56,25 @@ export default function ControlledAccordions( { content }:Props ) {
       { content?.map((agent) => {
         return(    
             <Accordion 
-            expanded={expanded === 'panel'+key } 
-            onChange={handleChange('panel'+key)} 
-            key={key}>
+              expanded={expanded === 'panel'+key } 
+              onChange={handleChange('panel'+key)} 
+              key={key}>
 
                 <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
                 >
-                <Typography sx={{ width: '100%', flexShrink: 0 }}>
                     <Container>
-                        <Title text="Nome completo" type="h2"></Title>         
-                        <UserImage name={agent?.name} imagePath={agent?.image} status={agent?.status} />
+                        <Title text="Nome completo" type="h2"></Title>                
+                        <UserImage name={agent?.name} imagePath={agent?.image} status={agent?.status} />          
                     </Container>
-                </Typography>
-                
-                {/* <Typography sx={{ color: 'text.secondary' }}>Nome completo</Typography> */}
+                    {/* <Typography sx={{ color: 'text.secondary' }}>Nome completo</Typography> */}
 
                 </AccordionSummary>
+                
                 <AccordionDetails>
-                <Typography>
+                
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={7}>
@@ -97,7 +97,7 @@ export default function ControlledAccordions( { content }:Props ) {
                        
                         <Button id={key++} path="/colaborador" />
                     </Box>
-                </Typography>
+               
                 </AccordionDetails>
             </Accordion>
         )
