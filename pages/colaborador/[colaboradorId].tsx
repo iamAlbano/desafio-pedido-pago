@@ -54,9 +54,9 @@ export default function AgentPage ( ) {
                 <Title text="Informações pessoais" type="h2" />
                   
                     <Info 
-                        cpf={agent?.document.number} 
-                        phone={`+${agent?.phone.ddi} ${agent?.phone.ddd} ${agent?.phone.number}`} 
-                        date={ agent?.birth_date } />
+                        cpf={`${agent?.document.number.substring(0, 3)} ${agent?.document.number.substring(3, 6)} ${agent?.document.number.substring(6, 9)} ${agent?.document.number.substring(9, 11)}`} 
+                        phone={`+${agent?.phone.ddi} ${agent?.phone.ddd} ${agent?.phone.number.substring(0, 5)} ${agent?.phone.number.substring(5, 10)}`} 
+                        date={ `${agent?.birth_date.substring(8, 10)}/${agent?.birth_date.substring(5, 7)}/${agent?.birth_date.substring(0, 4)}` } />
 
                 
                     <DataContainer 
