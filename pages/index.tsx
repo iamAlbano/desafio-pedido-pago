@@ -2,12 +2,11 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Header from '../components/header'
-import SearchBar from '../components/container/search'
-
-import api from "./api/agents";
 
 import React, { useEffect, useState } from "react";
+import api from "./api/agents";
 
+import SearchBar from '../components/container/search'
 import Tabs from '../components/container/tabs'
 import Title from '../components/container/title'
 import ResponsiveContainer from '../components/ResponsiveContainer'
@@ -53,6 +52,8 @@ useEffect(() => {
 
 
 const heads = ["Nome completo", "Departamento", "Cargo", "Unidade", "Status"]
+
+
 
   return (
     <Layout title="Organização">

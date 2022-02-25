@@ -24,6 +24,8 @@ export default function AgentPage ( ) {
   const router = useRouter()
   const { colaboradorId } = router.query
 
+  
+
 
 
   useEffect(() => {
@@ -39,6 +41,10 @@ export default function AgentPage ( ) {
         console.error("erro: " + err);
       });
   }, []);
+
+ 
+
+  
 
 
   

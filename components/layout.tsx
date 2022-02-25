@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Head from 'next/head'
 
+import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/react'
+
 import Header from './header'
 import Sidebar from './sidebar'
 import Container from './container/container';
-
-import { css, jsx } from '@emotion/react'
-import styled from '@emotion/styled'
 
 
 type Props = {
@@ -18,6 +18,8 @@ type Props = {
 
 
 const Layout = ( { title, children }:Props ) => {
+
+  
 
   return (
     <>
