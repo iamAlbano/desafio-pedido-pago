@@ -66,7 +66,7 @@ export default function ControlledAccordions( { content }:Props ) {
                 <Typography sx={{ width: '100%', flexShrink: 0 }}>
                     <Container>
                         <Title text="Nome completo" type="h2"></Title>         
-                        <UserImage name={agent?.name} imagePath={agent?.image} />
+                        <UserImage name={agent?.name} imagePath={agent?.image} status={agent?.status} />
                     </Container>
                 </Typography>
                 

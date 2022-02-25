@@ -21,6 +21,7 @@ const Layout = ( { title, children }:Props ) => {
 
   return (
     <>
+    
         <Head>
             <title>Pedido Pago</title>
            

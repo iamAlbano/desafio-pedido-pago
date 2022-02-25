@@ -4,16 +4,31 @@ import styled from '@emotion/styled'
 
 import Avatar from '@mui/material/Avatar';
 
+type Props = {
+    name: string,
+    imagePath: string,
+    actived: string,
+    status: string,
+  };
+
 
 const Text = styled.p(
 `
       font-weight: 600;
-      color: #34423D;
       margin-left: 5%;
-      vertical-align: top;
-      
+      color: rgba(88, 113, 105, 1);
+      vertical-align: top;    
 `
 )
+
+const InactiveText = styled.p(
+    `
+        font-weight: 600;
+        margin-left: 5%;
+        color: rgba(163, 184, 176, 1);
+        vertical-align: top;    
+    `
+    )
 
 
 const UserContainer = styled.div`
@@ -28,13 +43,10 @@ const UserContainer = styled.div`
 
 
 
-type Props = {
-    name: string,
-    imagePath: string,
-  };
 
 
-const UserImage = ( {name, imagePath }:Props ) => {
+
+const UserImage = ( {name, imagePath, status }:Props ) => {
     return (
         <>
             <UserContainer>
@@ -42,7 +54,18 @@ const UserImage = ( {name, imagePath }:Props ) => {
                     <Avatar alt={ name } src={ imagePath}  />
                 </ImageContainer>
 
-                <Text >{ name }</Text>
+                {
+                    status == "active" ? (
+                        <Text>
+                            { name }
+                         </Text>
+                    ) : (
+                        <InactiveText>
+                            { name }
+                        </InactiveText>
+                    )
+                }
+                
             </UserContainer>
         </>
     );

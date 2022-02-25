@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { styled } from '@mui/system';
+import styles from '@emotion/styled'
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 
 import Status from '../../agent/status' 
@@ -99,6 +100,12 @@ const CustomTablePagination = styled(TablePaginationUnstyled)`
   }
 `;
 
+const RowText = styles.span`
+        color: ${props =>
+            props?.actived ? 'rgba(88, 113, 105, 1)' : 'rgba(163, 184, 176, 1)'};
+        
+`
+
 
 
 export default function UnstyledTable( { content }:Props ) {
@@ -161,21 +168,55 @@ export default function UnstyledTable( { content }:Props ) {
           ).map((row) => (
             <tr key={ ++key }>
               <td style={{ width: 200 }} align="right">
-                  <UserImage name={row.name} imagePath={row.image} />
+                  <UserImage name={row.name} imagePath={row.image} status={row.status} />
                   </td>
               
               <td style={{ width: 160 }} align="right">
-                {row.department}
+                   { row?.status != "inactive" ? (
+                     
+                     <RowText actived>
+                      {row.department}
+                      </RowText>
+                     ) : (
+                      <RowText >
+                      {row.department}
+                      </RowText>
+                   )
+                   }             
               </td>
+
               <td style={{ width: 130 }} align="right">
-                {row.role}
+                { row?.status != "inactive" ? (
+                     
+                     <RowText actived>
+                      {row.role}
+                      </RowText>
+                     ) : (
+                      <RowText >
+                      {row.role}
+                      </RowText>
+                   )
+                }
               </td>
+
               <td style={{ width: 190 }} align="right">
-                {row.branch}
+                { row?.status != "inactive" ? (
+                      
+                      <RowText actived>
+                        {row.branch}
+                        </RowText>
+                      ) : (
+                        <RowText >
+                        {row.branch}
+                        </RowText>
+                    )
+                  }
               </td>
+
               <td style={{ width: 60 }} align="right">
                 <Status status={row.status} />
               </td>
+
               <td style={{ width: 40 }} align="right">
                 <FloatMenu id={ key } path="/colaborador" />
               </td>
