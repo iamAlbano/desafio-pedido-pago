@@ -55,6 +55,8 @@ const router = useRouter()
 const { colaboradorId } = router.query
 const [agent, setAgent] = useState();
 
+console.log(colaboradorId)
+
 useEffect(() => {
   
   
@@ -65,7 +67,8 @@ useEffect(() => {
       }
       )
       .catch((err) => {
-        console.error("erro: " + err);
+        router.push(`/404`)
+        // console.error("erro: " + err);
       });
     }, []);
     
@@ -75,7 +78,6 @@ useEffect(() => {
 
         <Layout title="Detalhes do colaborador">
             <>
-                { console.log( agent )}
           <AgentInfoPage agent={ agent } />
 
             </>
