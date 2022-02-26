@@ -17,6 +17,8 @@ import Info from '../../components/agent/info'
 import DataContainer from '../../components/agent/dataContainer'
 import AgentInfoPage from '../../components/agent/agentInfoPage'
 
+import LoadingPage from '../../components/loadingPage'
+
 type DocumentType = {
   number: string,
   type: string,
@@ -55,7 +57,7 @@ const router = useRouter()
 const { colaboradorId } = router.query
 const [agent, setAgent] = useState();
 
-console.log(colaboradorId)
+
 
 useEffect(() => {
   
@@ -72,7 +74,11 @@ useEffect(() => {
       });
     }, []);
     
-    
+    if(agent == undefined){
+      return(
+        <LoadingPage />
+      )
+    }
   
   return (
 

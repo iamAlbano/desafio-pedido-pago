@@ -6,6 +6,8 @@ import Header from '../components/header'
 import React, { useEffect, useState } from "react";
 import api from "./api/agents";
 
+import Layout from '../components/layout'
+
 import SearchBar from '../components/container/search'
 import Tabs from '../components/container/tabs'
 import Title from '../components/container/title'
@@ -15,7 +17,8 @@ import AgentsTable from '../components/table/agents/agentsTable'
 import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event'
 import AgentsMobileTable from '../components/table/agents/agentsMobileTable'
 
-import Layout from '../components/layout'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 type objectType = {
   name: string,
@@ -62,8 +65,7 @@ useEffect(() => {
     });
 }, []);
 
-
-
+  
 
   return (
     <Layout title="Organização">
@@ -73,14 +75,30 @@ useEffect(() => {
       <SearchBar label="Pesquisar por" placeholder="Pesquisar por nome ou CPF"/>
 
       <Title text="Listagem de colaboradores" type="h2"/>
-      
-      <ResponsiveContainer device="desktop">
-          <AgentsTable content={ agents }/>
-      </ResponsiveContainer>
 
-      <ResponsiveContainer device="mobile">
-          <AgentsMobileTable content={ agents } />
-      </ResponsiveContainer>
+     { agents.length == 0 ? (
+
+          <Box sx={{ 
+                display: 'flex',
+                justifyContent: 'center',
+                }}>
+            <CircularProgress />
+          </Box>     
+ 
+     ) : (
+      <>
+        <ResponsiveContainer device="desktop">
+            <AgentsTable content={ agents }/>
+        </ResponsiveContainer>
+
+        <ResponsiveContainer device="mobile">
+            <AgentsMobileTable content={ agents } />
+        </ResponsiveContainer>
+      </>
+     )
+      
+    }
+      
 
       </>
     </Layout>

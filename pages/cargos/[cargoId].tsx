@@ -14,6 +14,8 @@ import PermissionsTable from '../../components/table/roles/permissionsTable'
 import roleInfoPage from '../../components/role/roleInfoPage'
 import RoleInfoPage from '../../components/role/roleInfoPage';
 
+import LoadingPage from '../../components/loadingPage'
+
 type groupRulesType = {
   role: string,
   permissions: string[],
@@ -50,9 +52,17 @@ const RolePage: NextPage = () => {
         console.error("erro: " + err);
       });
   }, []);
+
+  if(cargo == undefined){
+    return(
+      <LoadingPage />
+    )
+  }
   
   
   return (
+
+    
 
     <Layout title="Cargos e permissões">
       <>

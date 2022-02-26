@@ -5,8 +5,6 @@ import Header from '../../components/header'
 import SearchBar from '../../components/container/search'
 import Tabs from '../../components/container/tabs'
 
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 
 import api from "../api/agents";
 import React, { useEffect, useState } from "react";
@@ -17,6 +15,9 @@ import RolesTable from '../../components/table/roles/rolesTable'
 import RolesMobileTable from '../../components/table/roles/rolesMobileTable'
 
 import Layout from '../../components/layout'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 type contentType = {
   role: string,
@@ -54,13 +55,30 @@ useEffect(() => {
                 
         <Title text="Listagem de cargos" type="h2"/>
 
-        <ResponsiveContainer device="desktop">
-            <RolesTable content={ roles }/>
-        </ResponsiveContainer>
+        { roles.length == 0 ? (
 
-        <ResponsiveContainer device="mobile">
+          <Box sx={{ 
+                display: 'flex',
+                justifyContent: 'center',
+                }}>
+            <CircularProgress />
+          </Box>     
+
+          ) : (
+          <>
+          <ResponsiveContainer device="desktop">
+            <RolesTable content={ roles }/>
+          </ResponsiveContainer>
+
+          <ResponsiveContainer device="mobile">
             <RolesMobileTable content={ roles }/>
-        </ResponsiveContainer>
+          </ResponsiveContainer>
+          </>
+          )
+
+          }
+
+        
       </>
   
     </Layout>
