@@ -18,7 +18,7 @@ type groupRulesType = {
   type roleType = {
       name: string,
       department: string,
-      grouprules: groupRulesType | undefined,
+      grouprules: groupRulesType[] | undefined,
   }
   
   type Props = {

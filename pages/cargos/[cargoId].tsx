@@ -11,6 +11,8 @@ import Layout from '../../components/layout'
 import Title from '../../components/container/title'
 import Info from '../../components/role/info'
 import PermissionsTable from '../../components/table/roles/permissionsTable'
+import roleInfoPage from '../../components/role/roleInfoPage'
+import RoleInfoPage from '../../components/role/roleInfoPage';
 
 type groupRulesType = {
   role: string,
@@ -55,7 +57,7 @@ const RolePage: NextPage = () => {
     <Layout title="Cargos e permissões">
       <>
      
-      
+        <RoleInfoPage cargo={ cargo } />
       </>
     </Layout>
   )
