@@ -19,9 +19,19 @@ import UserImage from '../../agent/userImage'
 import Status from '../../agent/status'
 import Title from '../../container/title'
 
+type objectType = {
+    name: string,
+    image: string,
+    status: string,
+    department: string,
+    role: string,
+    branch: string,
+}
+
 type Props = {
-    content: object[],
+    content: objectType[],
   };
+
 
 const Container = styled.div`
   display: flex;

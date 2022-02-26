@@ -94,6 +94,14 @@ const CustomTablePagination = styled(TablePaginationUnstyled)`
   }
 `;
 
+type contentType = {
+    role:string,
+    permissions: string[],
+}
+
+type Props = {
+  content: contentType[] | undefined,
+}
 
 
 export default function UnstyledTable( { content }:Props ) {
@@ -106,20 +114,14 @@ export default function UnstyledTable( { content }:Props ) {
     
   }
 
-  interface permissions {
+  type permissions = {
     name: string;
     read: boolean;
     edit: boolean;
     del: boolean;
   }
   
-  interface Props {
-    content: object[],
-    rows: permissions[];
-  }
-
-  
-  let rows:Props = [];
+  let rows:permissions[] = [];
 
     content?.map((row) => {
        
@@ -130,6 +132,7 @@ export default function UnstyledTable( { content }:Props ) {
                 row?.permissions.includes('delete'),  ),
         )
      })
+
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =

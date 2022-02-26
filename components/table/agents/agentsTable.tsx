@@ -8,8 +8,17 @@ import FloatMenu from '../FloatMenu'
 
 import UserImage from '../../agent/userImage'
 
+type objectType = {
+  name: string,
+  image: string,
+  status: string,
+  department: string,
+  role: string,
+  branch: string,
+}
+
 type Props = {
-    content: object[],
+    content: objectType[],
   };
 
 const Root = styled('div')`
@@ -100,9 +109,13 @@ const CustomTablePagination = styled(TablePaginationUnstyled)`
   }
 `;
 
-const RowText = styles.span`
+interface IRowStyled {
+  isActive: string;
+}
+
+const RowText = styles.span<IRowStyled>`
         color: ${props =>
-            props?.actived ? 'rgba(88, 113, 105, 1)' : 'rgba(163, 184, 176, 1)'};
+            props.isActive == 'active' ? 'rgba(88, 113, 105, 1)' : 'rgba(163, 184, 176, 1)'};
         
 `
 
@@ -119,7 +132,7 @@ export default function UnstyledTable( { content }:Props ) {
   }
 
   
-  let rows:string[] = [
+  let rows:objectType[] = [
        
     ];
 
@@ -172,45 +185,28 @@ export default function UnstyledTable( { content }:Props ) {
                   </td>
               
               <td style={{ width: 160 }} align="right">
-                   { row?.status != "inactive" ? (
-                     
-                     <RowText actived>
+                   
+                     <RowText isActive={row.status} >
                       {row.department}
                       </RowText>
-                     ) : (
-                      <RowText >
-                      {row.department}
-                      </RowText>
-                   )
-                   }             
+                                 
               </td>
 
               <td style={{ width: 130 }} align="right">
-                { row?.status != "inactive" ? (
-                     
-                     <RowText actived>
+                 
+                     <RowText isActive={row.status}>
                       {row.role}
                       </RowText>
-                     ) : (
-                      <RowText >
-                      {row.role}
-                      </RowText>
-                   )
-                }
+                    
+                
               </td>
 
               <td style={{ width: 190 }} align="right">
-                { row?.status != "inactive" ? (
-                      
-                      <RowText actived>
+                  
+                      <RowText isActive={row.status}>
                         {row.branch}
                         </RowText>
-                      ) : (
-                        <RowText >
-                        {row.branch}
-                        </RowText>
-                    )
-                  }
+                   
               </td>
 
               <td style={{ width: 60 }} align="right">

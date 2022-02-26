@@ -5,9 +5,7 @@ import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 import FloatMenu from '../FloatMenu'
 
 
-type Props = {
-    content: object[],
-  };
+
 
 const Root = styled('div')`
   table {
@@ -97,7 +95,16 @@ const CustomTablePagination = styled(TablePaginationUnstyled)`
   }
 `;
 
+type contentType = {
+  name: string,
+  departament: string,
+  agents_quantity: number,
+}
 
+
+type Props = {
+  content: contentType[],
+};
 
 export default function UnstyledTable( { content }:Props ) {
   const [page, setPage] = React.useState(0);
@@ -110,9 +117,7 @@ export default function UnstyledTable( { content }:Props ) {
   }
 
   
-  let rows:string[] = [
-       
-    ];
+  let rows:contentType[] = [ ];
 
     content?.map((row) => {
         rows.push(

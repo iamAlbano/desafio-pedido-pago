@@ -17,9 +17,22 @@ import AgentsMobileTable from '../components/table/agents/agentsMobileTable'
 
 import Layout from '../components/layout'
 
+type objectType = {
+  name: string,
+  image: string,
+  status: string,
+  department: string,
+  role: string,
+  branch: string,
+}
+
+type Props = {
+    agents: objectType[],
+  };
+
 const Home: NextPage = (  ) => {
 
-const [agents, setAgents] = useState();
+const [agents, setAgents] = useState([]);
 
 // var axios = require('axios');
 
@@ -51,9 +64,6 @@ useEffect(() => {
 
 
 
-const heads = ["Nome completo", "Departamento", "Cargo", "Unidade", "Status"]
-
-
 
   return (
     <Layout title="Organização">
@@ -63,7 +73,6 @@ const heads = ["Nome completo", "Departamento", "Cargo", "Unidade", "Status"]
       <SearchBar label="Pesquisar por" placeholder="Pesquisar por nome ou CPF"/>
 
       <Title text="Listagem de colaboradores" type="h2"/>
-    
       
       <ResponsiveContainer device="desktop">
           <AgentsTable content={ agents }/>

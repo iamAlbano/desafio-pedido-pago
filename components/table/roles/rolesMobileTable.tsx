@@ -17,9 +17,7 @@ import Button from '../../button'
 import Status from '../../agent/status'
 import Title from '../../container/title'
 
-type Props = {
-    content: object[],
-  };
+
 
 const Container = styled.div`
   display: flex;
@@ -35,6 +33,15 @@ const Head = styled.p`
 const Text = styled.p`
     color: #587169;
 `
+type contentType = {
+  name: string,
+  departament: string,
+  agents_quantity: number,
+}
+
+type Props = {
+  content: contentType[],
+};
 
 export default function ControlledAccordions( { content }:Props ) {
   const [expanded, setExpanded] = React.useState<string | false>(false);

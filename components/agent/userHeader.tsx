@@ -34,9 +34,12 @@ function stringAvatar(name: string) {
     };
   }
 
+interface ITextStyled {
+    fontWeight: string;
+ }
 
 
-const Text = styled.p(
+const Text = styled.p<ITextStyled>(
     {
       color: '#34423D',
       margin: '1px',

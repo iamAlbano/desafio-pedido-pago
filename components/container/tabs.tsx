@@ -16,6 +16,10 @@ type Props = {
     active: string,
   };
 
+  interface IButtonStyled {
+    status: string;
+ }
+
 const Tab = styled.ul`
         display: flex;
         flex-direction: row;
@@ -28,16 +32,16 @@ const Tab = styled.ul`
         padding-left: 0;
 `
 
-const Button = styled.li`
+const Button = styled.li<IButtonStyled>`
         text-align: center;
         padding-bottom: 0.5em;
         margin: 0 1.5em 0em 0;
         width: 25%;
         font-weight: bold;
         color: ${props =>
-            props.active ? '#34423D' : '#A3B8B0'};
+            props.status == 'active' ? '#34423D' : '#A3B8B0'};
         border-bottom: ${props =>
-            props.active ? '2px solid #22E0A1' : '2px solid #EAEFED'};
+            props.status == 'active' ? '2px solid #22E0A1' : '2px solid #EAEFED'};
 `
 
 
@@ -48,18 +52,26 @@ const Button = styled.li`
 
 const Tabs = ( { active }:Props ) => {
 
+    let abaColaboradores:string = 'inactive'
+    let abaCargos:string = 'inactive'
+
+    if(active == "Colaboradores")
+        abaColaboradores = 'active'
+    else 
+        abaCargos = 'active'
+
     return (
         <>
         <ResponsiveContainer device="desktop">
             <Tab>     
                     <Link href="/" > 
-                        <Button {...active == "Colaboradores" &&({ active })} >
+                        <Button status={abaColaboradores} >
                                 <a>Colaboradores</a>
                         </Button>
                     </Link> 
 
                     <Link href="/cargos" > 
-                        <Button {...active == "Cargos" &&({ active })} >
+                        <Button  status={abaCargos}>
                                 <a>Cargos</a>
                         </Button>
                     </Link> 

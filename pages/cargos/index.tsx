@@ -18,9 +18,19 @@ import RolesMobileTable from '../../components/table/roles/rolesMobileTable'
 
 import Layout from '../../components/layout'
 
+type contentType = {
+  role: string,
+  departament: string,
+  agents_quantity: number,
+}
+
+type Props = {
+    roles: contentType[],
+  };
+
 const Home: NextPage = () => {
 
-const [roles, setRoles] = useState();
+const [roles, setRoles] = useState([]);
 
 useEffect(() => {
   api

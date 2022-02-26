@@ -12,9 +12,22 @@ import Title from '../../components/container/title'
 import Info from '../../components/role/info'
 import PermissionsTable from '../../components/table/roles/permissionsTable'
 
+type groupRulesType = {
+  role: string,
+  permissions: string[],
+}
 
+type roleType = {
+    name: string,
+    department: string,
+    grouprules: groupRulesType,
+}
 
-const Home: NextPage = () => {
+type Props = {
+    cargo: roleType | undefined,
+}
+
+const RolePage: NextPage = () => {
 
   const [cargo, setCargo] = useState();
 
@@ -35,21 +48,17 @@ const Home: NextPage = () => {
         console.error("erro: " + err);
       });
   }, []);
-
-
+  
+  
   return (
 
     <Layout title="Cargos e permissões">
       <>
      
-      <Title text="Dados do cargo" type="h2"/>
-      <Info name={cargo?.name} department={cargo?.department} />
-      <Title text="Listagem de permissões" type="h2" />
-
-      <PermissionsTable content={cargo?.grouprules} />
+      
       </>
     </Layout>
   )
 }
 
-export default Home;
+export default RolePage;

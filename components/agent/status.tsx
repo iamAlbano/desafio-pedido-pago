@@ -2,11 +2,15 @@ import * as React from 'react';
 import { css, jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 
+interface IUserStyled {
+    active: string;
+ }
+
 type Props = {
     status: string,
   };
 
-  const UserStatus = styled.span`
+  const UserStatus = styled.span<IUserStyled>`
                               
                         text-align: center;
                         border-radius: 80px;
@@ -17,15 +21,16 @@ type Props = {
                             padding: 5% 20%; 
                         }               
                         background-color: ${props =>
-                            props.status ? '#B5F1DD' : '#EAEFED'};
+                            props.active == 'active' ? '#B5F1DD' : '#EAEFED'};
   `
+
 
 
 
 
   const Status = ( { status }:Props ) => {
     return (
-        <UserStatus {...status == "active" &&( { status } )} >
+        <UserStatus active={status} >
             { status == "active" ? "Ativo" : "Inativo" }
         </UserStatus>
     );
