@@ -49,6 +49,7 @@ const RolePage: NextPage = () => {
       }
       )
       .catch((err) => {
+        router.push(`/404`)
         console.error("erro: " + err);
       });
   }, []);
