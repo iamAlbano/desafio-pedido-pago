@@ -9,6 +9,9 @@ const SideDiv = styled.div`
                     border: 1px solid #EAEFED;
                     position: absolute;
                     box-shadow: 4px 4px 4px rgba(50, 50, 50, .1);
+                    @media (max-height: 720px) {
+                      height: 150vh !important;
+                    }
                     @media (max-width: 1000px) {
                         display: none;
                       }
