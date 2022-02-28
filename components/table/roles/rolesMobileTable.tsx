@@ -40,10 +40,11 @@ type contentType = {
 }
 
 type Props = {
+  search: string,
   content: contentType[],
 };
 
-export default function ControlledAccordions( { content }:Props ) {
+export default function ControlledAccordions( { search, content }:Props ) {
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange =
@@ -59,6 +60,7 @@ export default function ControlledAccordions( { content }:Props ) {
 
       { content?.map((role) => {
         key++
+      if(role?.name.toLowerCase().includes(search.toLowerCase())){
         return(    
             <Accordion 
             expanded={expanded === 'panel'+key } 
@@ -105,6 +107,7 @@ export default function ControlledAccordions( { content }:Props ) {
                 </AccordionDetails>
             </Accordion>
         )
+      }
       })}
 
     </div>

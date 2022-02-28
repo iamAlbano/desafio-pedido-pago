@@ -19,6 +19,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
+
 type contentType = {
   role: string,
   departament: string,
@@ -26,12 +30,14 @@ type contentType = {
 }
 
 type Props = {
+    search: string,
     roles: contentType[],
   };
 
 const Home: NextPage = () => {
 
 const [roles, setRoles] = useState([]);
+const [ search, setSearch] = useState("")
 
 useEffect(() => {
   api
@@ -45,13 +51,39 @@ useEffect(() => {
     });
 }, []);
 
+function handleChangeSearch( search:string ){
+  setSearch(search)
+}
+
 
   return (
     <Layout title="Organização">
       <>
         <Tabs active="Cargos" />
   
-        <SearchBar label="Pesquisar por" placeholder="Pesquise por cargos" />
+        {/* <SearchBar label="Pesquisar por" placeholder="Pesquise por cargos" /> */}
+
+        <TextField
+                fullWidth
+                id="outlined-size-small"
+                size="small"
+                label="Pesquisar por"
+                type="search"
+                color="info"
+                onChange={e => handleChangeSearch(e.target.value)}
+                placeholder="Pesquisar por cargos"
+                InputLabelProps={{
+                    shrink: true,
+                }}
+
+                InputProps={{
+                    startAdornment: (
+                    <InputAdornment position="start">
+                        <SearchIcon />
+                    </InputAdornment>
+                    ),
+                }}
+        />
                 
         <Title text="Listagem de cargos" type="h2"/>
 
@@ -67,11 +99,11 @@ useEffect(() => {
           ) : (
           <>
           <ResponsiveContainer device="desktop">
-            <RolesTable content={ roles }/>
+            <RolesTable content={ roles } search={ search } />
           </ResponsiveContainer>
 
           <ResponsiveContainer device="mobile">
-            <RolesMobileTable content={ roles }/>
+            <RolesMobileTable content={ roles } search={ search }/>
           </ResponsiveContainer>
           </>
           )

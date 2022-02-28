@@ -5,8 +5,6 @@ import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 import FloatMenu from '../FloatMenu'
 
 
-
-
 const Root = styled('div')`
   table {
     font-family: arial, sans-serif;
@@ -103,10 +101,12 @@ type contentType = {
 
 
 type Props = {
+  search: string,
   content: contentType[],
 };
 
-export default function UnstyledTable( { content }:Props ) {
+export default function UnstyledTable( { search, content }:Props ) {
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -120,9 +120,11 @@ export default function UnstyledTable( { content }:Props ) {
   let rows:contentType[] = [ ];
 
     content?.map((row) => {
+      if(row?.name.toLowerCase().includes(search.toLowerCase())){
         rows.push(
             createData(row?.name, row?.departament, row?.agents_quantity  ),
         )
+      }
      })
 
   // Avoid a layout jump when reaching the last page with empty rows.

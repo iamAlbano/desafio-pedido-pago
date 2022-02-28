@@ -18,6 +18,7 @@ type objectType = {
 }
 
 type Props = {
+    search: string,
     content: objectType[],
   };
 
@@ -121,7 +122,7 @@ const RowText = styles.span<IRowStyled>`
 
 
 
-export default function UnstyledTable( { content }:Props ) {
+export default function UnstyledTable( { search, content }:Props ) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -137,9 +138,11 @@ export default function UnstyledTable( { content }:Props ) {
     ];
 
     content?.map((row) => {
+      if(row?.name.toLowerCase().includes(search.toLowerCase())){
         rows.push(
             createData(row?.name, row?.department, row?.role, row?.branch, row?.status, row?.image),
         )
+      }
      })
 
   // Avoid a layout jump when reaching the last page with empty rows.

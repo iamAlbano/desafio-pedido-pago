@@ -29,6 +29,7 @@ type objectType = {
 }
 
 type Props = {
+    search: string,
     content: objectType[],
   };
 
@@ -49,7 +50,7 @@ const Text = styled.p`
     color: #587169;
 `
 
-export default function ControlledAccordions( { content }:Props ) {
+export default function ControlledAccordions( { search, content }:Props ) {
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange =
@@ -64,7 +65,9 @@ export default function ControlledAccordions( { content }:Props ) {
       <div>
 
       { content?.map((agent) => {
-        return(    
+        if(agent?.name.toLowerCase().includes(search.toLowerCase())){
+       
+          return(    
             <Accordion 
               expanded={expanded === 'panel'+key } 
               onChange={handleChange('panel'+key)} 
@@ -111,6 +114,7 @@ export default function ControlledAccordions( { content }:Props ) {
                 </AccordionDetails>
             </Accordion>
         )
+        }
       })}
 
     </div>

@@ -20,6 +20,10 @@ import AgentsMobileTable from '../components/table/agents/agentsMobileTable'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
+
 type objectType = {
   name: string,
   image: string,
@@ -30,28 +34,14 @@ type objectType = {
 }
 
 type Props = {
+    search: string,
     agents: objectType[],
   };
 
 const Home: NextPage = (  ) => {
 
-const [agents, setAgents] = useState([]);
-
-// var axios = require('axios');
-
-// var config = {
-//   method: 'get',
-//   url: 'https://pp-api-desafio.herokuapp.com/agents',
-//   headers: { }
-// };
-
-// axios(config)
-// .then((response) =>
-//   setAgents(response.data)
-// )
-// .catch(function (error) {
-//   console.log(error);
-// });
+const [agents, setAgents] = useState([])
+const [search, setSearch] = useState("")
 
 useEffect(() => {
   api
@@ -65,6 +55,10 @@ useEffect(() => {
     });
 }, []);
 
+function handleChangeSearch( search:string ){
+      setSearch(search)
+}
+
   
 
   return (
@@ -72,7 +66,29 @@ useEffect(() => {
       <>
   
       <Tabs active="Colaboradores" />
-      <SearchBar label="Pesquisar por" placeholder="Pesquisar por nome ou CPF"/>
+      {/* <SearchBar label="Pesquisar por" placeholder="Pesquisar por nome ou CPF"/> */}
+
+      <TextField
+                fullWidth
+                id="outlined-size-small"
+                size="small"
+                label="Pesquisar por"
+                type="search"
+                color="info"
+                onChange={e => handleChangeSearch(e.target.value)}
+                placeholder="Pesquisar por nome"
+                InputLabelProps={{
+                    shrink: true,
+                }}
+
+                InputProps={{
+                    startAdornment: (
+                    <InputAdornment position="start">
+                        <SearchIcon />
+                    </InputAdornment>
+                    ),
+                }}
+        />
 
       <Title text="Listagem de colaboradores" type="h2"/>
 
@@ -88,11 +104,11 @@ useEffect(() => {
      ) : (
       <>
         <ResponsiveContainer device="desktop">
-            <AgentsTable content={ agents }/>
+            <AgentsTable content={ agents } search={search} />
         </ResponsiveContainer>
 
         <ResponsiveContainer device="mobile">
-            <AgentsMobileTable content={ agents } />
+            <AgentsMobileTable content={ agents } search={search} />
         </ResponsiveContainer>
       </>
      )
